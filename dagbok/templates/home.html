@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+    <p>{{ main_entry.title }}</p>
+    <p>{{ main_entry.pub_date.strftime("%B %d, %Y") }}</p>
+    <p>{{ main_entry.body|safe }}</p>
+<hr />
+</div>
+{% endblock %}
