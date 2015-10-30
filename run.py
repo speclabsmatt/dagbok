@@ -1,4 +1,4 @@
-from dagbok import dagbok
+from dagbok import app
 
 if __name__ == '__main__':
-    dagbok.run()
+    app.run()
