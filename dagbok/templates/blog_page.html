@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+{% for entry in entries %}
+<div>
+    <p>{{ entry.title }}</p>
+    <p>{{ entry.pub_date.strftime("%B %d, %Y") }}</p>
+    <div class='entry_body' style="display:none"><p>{{ entry.body|safe }}</p></div>
+    <div class='toggle'>View Entry</div>
+</div>
+{% endfor %}
+<a href='/page/{{ prev_page }}'>Previous Page</a>
+{% if has_next %}
+<a href='/page/{{ next_page }}'>Next Page</a>
+{% endif %}
+<hr />
+</div>
+{% endblock %}
