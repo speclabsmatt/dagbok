@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
 from database import Base
 from datetime import datetime
+import re
 
 class User(Base):
     __tablename__ = 'users'
@@ -19,13 +20,14 @@ class Entry(Base):
     __tablename__ = 'entries'
     id = Column(Integer, primary_key=True)
     title = Column(String(100))
-    summary = Column(String(200))
+    slug = Column(String(100))
     body = Column(Text)
     pub_date = Column(DateTime)
     tags = Column(String(100))
 
-    def __init__(self, title, summary, body, tags, pub_date=None):
+    def __init__(self, title, body, tags, pub_date=None):
         self.title = title
+        self.slug = re.sub('[^\w]+', '_', self.title.lower())
         self.body = body
         if pub_date is None:
             pub_date = datetime.now()

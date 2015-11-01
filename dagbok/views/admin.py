@@ -9,7 +9,7 @@ admin = Blueprint('admin', __name__)
 def index():
     if not session.get('logged_in'):
         return redirect(url_for('admin.login'))
-    return render_template("layout.html")
+    return render_template('admin.html')
 
 @admin.route('/login', methods=['GET', 'POST'])
 def login():
@@ -29,3 +29,15 @@ def login():
 def logout():
     session.pop('logged_in', None)
     return redirect(url_for('show_entries'))
+
+@admin.route('/post', methods=['GET', 'POST'])
+def post_entry():
+    if request.method == 'GET':
+        return render_template('post_entry.html')
+    if not session.get('logged_in'):
+        abort(401)
+    entry = Entry(request.form['title'], request.form['body'],
+                  request.form['tags'])
+    db_session.add(entry)
+    db_session.commit()
+    return redirect(url_for('home'))

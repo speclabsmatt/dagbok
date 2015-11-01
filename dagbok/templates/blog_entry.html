@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+<div>
+{% if entry %}
+    <p>{{ entry.title }}</p>
+    <p>{{ entry.pub_date.strftime("%B %d, %Y") }}</p>
+    <div><p>{{ entry.body|safe }}</p></div>
+</div>
+{% endif %}
+{% endblock %}

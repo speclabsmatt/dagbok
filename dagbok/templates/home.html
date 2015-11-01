@@ -3,7 +3,7 @@
 <div>
 {% if main_entry %}
 <div>
-    <p>{{ main_entry.title }}</p>
+    <p><a href='/{{ main_entry.pub_date.strftime('%Y/%m/%d') }}/{{ main_entry.slug }}'>{{ main_entry.title }}</a></p>
     <p>{{ main_entry.pub_date.strftime("%B %d, %Y") }}</p>
     <div class='entry_body'><p>{{ main_entry.body|safe }}</p></div>
     <div class='toggle'>Hide Entry</div>
@@ -11,7 +11,7 @@
 {% endif %}
 {% for entry in entries %}
 <div>
-    <p>{{ entry.title }}</p>
+    <p><a href='/{{ entry.pub_date.strftime('%Y/%m/%d') }}/{{ entry.slug }}'>{{ entry.title }}</a></p>
     <p>{{ entry.pub_date.strftime("%B %d, %Y") }}</p>
     <div class='entry_body' style="display:none"><p>{{ entry.body|safe }}</p></div>
     <div class='toggle'>View Entry</div>

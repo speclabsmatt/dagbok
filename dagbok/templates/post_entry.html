@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+
+<script type="text/javascript" src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+<script type="text/javascript" >
+tinyMCE.init({
+        mode : "textareas"
+});
+</script >
+    <form action="{{ url_for('admin.post_entry') }}" method=post class=add-entry>
+      <dl>
+        <dt>Entry Title:
+        <dd><input type=text size=30 name=title value="Enter your title">
+        <dt>Entry Content:
+        <dd><textarea name=body rows=5 cols=40></textarea>
+        <dt>Tags:
+        <dd><input type=text size=30 name=tags>
+	<dd><input type=submit value=Post>
+      </dl>
+    </form>
+  {% endif %}
+{% endblock %}
