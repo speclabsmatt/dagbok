@@ -30,7 +30,7 @@ def page(page_num):
     has_next = (Entry.query.count() > (offset + 5))
     next_page = page_num + 1
     prev_page = page_num - 1
-    return render_template('blog_page.html', entries=entries, has_next=has_next,
+    return render_template('blog_list.html', entries=entries, has_next=has_next,
                            next_page=next_page, prev_page=prev_page, title = 'Blog')
 
 @app.route('/<int:year>/<int:month>/<int:day>/<entry_slug>')
@@ -40,4 +40,4 @@ def get_entry(year, month, day, entry_slug):
         (extract('month', Entry.pub_date) == month) &
         (extract('day', Entry.pub_date) == day)
         ).filter_by(slug=entry_slug).first()
-    return render_template('blog_entry.html', entry=entry)
+    return render_template('single_entry.html', entry=entry)

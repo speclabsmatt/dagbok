@@ -5,8 +5,7 @@
 <div>
     <p>{{ entry.title }}</p>
     <p>{{ entry.pub_date.strftime("%B %d, %Y") }}</p>
-    <div class='entry_body' style="display:none"><p>{{ entry.body|safe }}</p></div>
-    <div class='toggle'>View Entry</div>
+    <p>{{ entry.summary }}</p>
 </div>
 {% endfor %}
 <a href='/page/{{ prev_page }}'>Previous Page</a>

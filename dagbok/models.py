@@ -21,12 +21,14 @@ class Entry(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(100))
     slug = Column(String(100))
+    summary = Column(String(250))
     body = Column(Text)
     pub_date = Column(DateTime)
     tags = Column(String(100))
 
-    def __init__(self, title, body, tags, pub_date=None):
+    def __init__(self, title, summary, body, tags, pub_date=None):
         self.title = title
+        self.summary = summary
         self.slug = re.sub('[^\w]+', '_', self.title.lower())
         self.body = body
         if pub_date is None:
@@ -36,3 +38,4 @@ class Entry(Base):
 
     def __repr__(self):
         return '<Post %r>' % self.title
+

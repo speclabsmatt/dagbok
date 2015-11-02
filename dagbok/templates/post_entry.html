@@ -11,7 +11,9 @@ tinyMCE.init({
     <form action="{{ url_for('admin.post_entry') }}" method=post class=add-entry>
       <dl>
         <dt>Entry Title:
-        <dd><input type=text size=30 name=title value="Enter your title">
+        <dd><input type=text size=30 name=title>
+	<dt>Summary:
+        <dd><input type=text size=100 name=summary>
         <dt>Entry Content:
         <dd><textarea name=body rows=5 cols=40></textarea>
         <dt>Tags:
